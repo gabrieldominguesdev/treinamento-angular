@@ -237,17 +237,17 @@ R: Podem e devem ser criados para atender a diversas finalidades da aplicação,
 
 - O que é uma rota?
 R: É uma estrutura de navegação que permite ao usuário acessar diferentes funcionalidades de uma aplicação.
-Ex: https://bmalaw.com.br/tblegal/faturamento
+Ex: https://xptolaw.com.br/tblegal/faturamento
 Destrinchando a URL:
 	- https É o scheme da URL, que define o protocólo utilizado na comunicação cliente/servidor
-	- bmalaw.com.br é o host (domínio) através do qual a aplicação é identificada
+	- xptolaw.com.br é o host (domínio) através do qual a aplicação é identificada
 	- tblegal/faturamento: É o caminho (path) para uma funcionalidade específica
 	
 - Como construir uma rota via Angular?
 R: Através da construção de Módulos de roteamento que utilizam o "RouterModule" nativo da ferramenta. Através de um módulo, que inclusive já vem incluso
 na estrutura padrão gerada pelo Angular CLI, podemos vincular componentes "raíz", a endereços específicos invocados pelo browser.
 Ex: podemos dizer que o path "auth", deverá ser utilizado para carregar no browser o "AuthComponent". Assim, o endereço para acesso a este determinado componente
-seria https://bmalaw.com.br/auth
+seria https://xptolaw.com.br/auth
 
 - Como eu crio de fato, uma ação de navegação dentro do projeto?
 R: Através de "Router Links". São diretivas adicionadas a botões ou âncoras ("<button></button>" ou "<a></a>"), que ao receberem um evento de "click", invocação o
