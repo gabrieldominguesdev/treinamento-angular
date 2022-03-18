@@ -1,0 +1,17 @@
+<p>Componente A - <button class="btn-esporro" (click)="darEsporro();">Dar esporro no meu filho 01</button> <span *ngIf="salveRecebidoResposta"> - Valeu Filhão 02!! Tu é o cara</span></p>
+
+<hr />
+
+<p>Filhos</p>
+
+<div class="filhos">
+
+    <app-comp-a-filho01 class="filho filho-esquerda" [esporro]="esporroDado">
+
+    </app-comp-a-filho01>
+
+    <app-comp-a-filho02 class="filho filho-direita" (salveProPaiEvent)="salveRecebido($event)">
+
+    </app-comp-a-filho02>
+
+</div>

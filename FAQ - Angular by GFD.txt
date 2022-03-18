@@ -1,0 +1,279 @@
+############################ Treinamento Angular - v0.1 by GFD ############################
+
+------------------Conceito
+
+- O que é o angular?
+R: É uma plataforma web baseada em typescript, para construção de SPAs.
+
+- O que é SPA?
+R: Single Page Application, é o conceito de que apenas uma página principal (index.html) será carregada e, a partir dalí, componentes serão construídos e destruídos dentro
+daquele elemento. Isso faz com que não seja necessário acessar o servidor a cada nova navegação dentro do sistema para que uma página seja renderizada, 
+pois a construção dos componentes passa a ser feita do lado do cliente. Neste conceito, a aplicação é 100% carregada em apenas 01 requisição.
+ 
+- Angular vs AngularJs
+R: 1 - AngularJs é baseado em javascript. Angular é baseado em Typescript. É possível alterar estes padrões.
+   2 - AngularJs é baseado em MVC. Angular é baseado em módulos, componentes e templates
+   3 - AngularJs feito em two-way-databinding melhorando a velocidade de construção. Angular é customizável, melhorando a performance.
+   4 - Angular possui um CLI para agilizar a construção de alguns elementos
+   5 - Angular é compilado AOT (Ahead of Time), transpilando o código typescript para javascript e identificando erros em tempo de compilação, não de execução
+   6 - Angular suporta Mobile (PWA)
+   
+Curiosidade 01: O que é transpilação?
+R: É uma tradução de código para um código de mais baixo nível, é uma especialização do compilador, traduzindo algo escrito, para algo compreensível pela plataforma de execução
+
+Curiosidade 02: O Javascript não é uma linguagem compilada, mas sim interpretada. Ele é compreensível pela engine de execução em sua forma de escrita em alto nível, sem a 
+necessidade de transformação para linguagem de máquina.
+
+------------------Dependências
+
+- Por onde eu começo?
+R: 1 - Instalar NVM. Basta fazer download do setup e rodar. A documentação do NPM não recomenda instalar o nodejs via installer, pois a instalação
+   automática do NPM como dependência do Nodejs pode gerar uma série de problemas de permissionamento ao trabalhar com os pacotes. Por isso,
+   o correto é utilizar via NVM.
+   URL documentação NVM: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+   URL NVM Windows: https://github.com/coreybutler/nvm-windows
+
+   2 - Instalar NodeJs e NPM através do NVM. Basta executar os seguintes passos:
+		1 - Abrir o CMD como administrador
+		2 - Executar "nvm install latest" ou "nvm install <número-da-versão-do-nodejs>"
+		3 - Executar "nvm ls" (lista as versões do node instaladas)
+		4 - Executar "nvm use <número-da-versão-do-nodejs>" (seleciona a versão do node que será utilizada
+
+Curiosidade 01: O que é o NodeJs?
+R: É um ambiente de execução de javascript, baseado no interpretador v8 do Chrome. O objetivo é executar códigos javascript server-side.
+
+Curiosidade 02: O que é o NPM?
+R: Significa Node Package Manager. É basicamente um gerenciador de pacotes, análogo ao nuget, que permite o download e instalação via comando, de bibliotecas javascript.
+
+Curiosidade 03: O que é o NVM?
+R: Significa Node Version Manager. Instala diferentes versões do node simultaneamente e seleciona a que será utilizada através do NPM.
+
+------------------Angular
+
+- Tudo pronto no ambiente. E agora?
+R: Utilizamos o npm para baixar e instalar o angular CLI, que nos permitirá criar e gerenciar nossos projetos angular
+	1 - Executar o comando: npm install -g @angular/cli
+	
+- Com o angular instalado na máquina, como faço para criar meu primeiro projeto?
+R: Ainda no CMD:
+	1 - Navegue até o diretório onde deseja que o projeto seja criado. No meu caso é: E:\projetos. Ou abra o CMD direto na pasta.
+	2 - Executar o comando: ng new nome-do-app
+
+- Projeto criado, como posso me certificar de que deu tudo certo?
+R: Além do log que é gerado como output do CMD, podemos rodar um comando build para testar a compilação da aplicação, ou rodar e ver o resultado no browser. Ex:
+	1 - Navegue até o diretório criado com o nome do app.
+	2 - Execute um dos comandos: "ng build" (para construir a aplicação) ou "ng serve" (para construir e disponibilizar a aplicação para acesso)
+
+- O que é esse "ng"	que é colocado antes dos comandos?
+R: É um prefixo utilizado para invocar o angular CLI e executar seus comandos. Ex: "ng build" diz pro angular CLI compilar a aplicação.
+
+Curiosidade 01: Caso deseje que o comando "ng serve", abra automaticamente o browser, adicione o parâmetro --open no final.
+
+Curiosidade 02: O que significa "ng"?
+R: Significa "Next Generation". Uma alusão a fato da tecnologia do angular levar o HTML a um novo patamar de potencial
+
+Curiosidade 03: O que significa "CLI"?
+R: Command Line Interface. É uma ferramenta através da qual será possível executar comandos para uma determinada finalidade relacionada ao ecossistema
+em que estamos trabalhando. Ex: dotnet CLI nos permite executar comandos relacionados ao .NET. angular CLI, mesma coisa, porém, em relação ao Angular.
+
+Curiosidade 04: Como eu navego em pastas via CMD?
+R: Utilizando o comando "cd". Exemplo:
+	1 - Execute "E:" para navegar da unidade "C", para a "E"
+	2 - (caso já esteja na unidade E:) cd projetos
+	3 - (para voltar um diretório) cd ..
+	4 - Execute "dir" para listar os diretórios filhos do diretório onde você está
+	
+------------------Codificação
+
+-Serão abordados os seguintes itens neste treinamento:
+	- IDE
+	- Estrutura de pastas
+	- Decorators
+	- Módulos
+	- Componentes
+	- Pipes
+	- Rotas
+	- Eventos
+	- Property Binding
+	- RxJs
+	- HTTP Request
+	
+#### IDE
+
+- Como devo editar meu projeto?
+R: Para trabalhar com Angular não é necessário utilizar alguma ferramenta robusta como Visual Studio ou WebStorm. É recomendado utilizar o Visual Studio Code,
+que é considerado apenas um editor de texto, porém, com uma série de add-ons que tornam o desenvolvimento uma experiência fluída e produtiva. Basta abrir o projeto
+no diretório onde a aplicação foi criada para começar a editar.
+URL para download: https://code.visualstudio.com/Download
+
+#### Estrutura de pastas
+
+- Onde devo criar minhas estruturas de arquivos para começar a trabalhar?
+R: Por padrão, um projeto angular possui a seguinte estrutura de diretórios:
+	- node_modules (bibliotecas utilizadas no projeto)
+	- src
+		- app (componentes, módulos, services, pipes, etc)
+		- assets (imagens, arquivos, ícones etc, incluidos no projeto)
+		- environments (configurações de ambiente e parâmetros para produção, homologação, desenvolvimento, etc)
+
+#### Decorators
+
+- Como eu identifico a finalidade de cada classe dentro de uma aplicação angular (Typescript)?
+R: Através de decorators (que eu gosto de chamar de anotações).
+Decorators são estruturas de comportamentos ou metadados que definem como cada classe ou elemento será utilizado dentro da aplicação. Ex:
+	- Decorators de classe:
+		- @NgModule(): Define que a classe é um módulo
+		- @Component(): Define que a classe é um componente
+		- @Pipe(): Define que a classe é um pipe
+	- Decorators de Propriedade:
+		- @Input(): Define que o valor inicial da propriedade será (ou poderá ser?) atribuído pela classe pai
+		- @Output(): Define que o um evento ou valor de elemento poderá ser enviado para a classe pai
+	- Decorators de Método:
+		- @HostListener(): Atribui um evento a um método. Ex: click em determinado contexto da aplicação, executa um método.
+	- Decorators de Parâemtro:
+		- @Injectable(): Define que a classe será utilizada através de injeção de dependência
+		- @Inject(): Não necessário. O tipo da classe injetada poderia ser passada como parâmetro desse decorator na injeção.
+		Ex: public @Inject(AuthService) authService.
+		
+
+#### Módulos
+
+- O que são módulos?
+R: São classes com decorator @NgModule(), cuja finalidade é identificar containers relacionados ao domínio da aplicação, no qual serão referenciados
+componentes que formem uma estrutura coerente com o negócio a ser desenvolvido. Ex: AuthModule - Responsável por referenciar os componentes relacionados a 
+autenticação, criação de usuário, etc. 
+
+- Todos os módulos são criados pelo desenvolvedor?
+R: Não, Existem módulos pré construidos em uma aplicação angular e em pacotes npm, pois são referentes ao escopo de responsabilidade para o qual foram criados.
+Ex: - AppModule: Módulo principal, de mais alto nível, responsável por agregar os demais módulos existentes em um projeto angular.
+	- CommonModule: Exporta as diretivas fundamentais do angular. Ex: NgFor, NgIf.
+	- BrowserModule: Faz a ponte entre o browser e a aplicação, pois exporta serviços para a aplicação rodar no browser
+	- FormsModule: Responsável por adicionar os componentes de formulário
+	- HttpClientModule: Responsável por prover recursos para requisições HTTP
+	
+Curiosidade 01: Alguns módulos pré construidos do angular re-exportam componentes de outros. Ex: BrowserModule exporta os componentes do CommonModule
+
+- Como saber quando devo criar um módulo?
+R: Através do DDD (Domain Driven Design), que não consiste apenas em codificação, mas em conversas com os clientes internos, levantamos e entendimento do negócio
+de uma forma geral. É FUNDAMENTAL entender o negócio e ter os objetivos do projeto bem definidos antes de começar a desenvolver, para que a abstração da realidade
+para o minimundo do software faça sentido com a expectativa do que o cliente espera receber. Compreendendo o negócio é possível identificar as raízes de agregação,
+onde nascem os elementos do sistema e a partir dessa compreensão, criamos os módulos.
+
+- Como faço para, de fato, criar um módulo?
+R: Para esta finalidade utilizamos o seguinte comando do CLI: "ng g m nome-do-modulo".
+Destrinchando o comando:
+	- "ng": Invocação do CLI.
+	- "g": Abreviação de "generate". Pode usar "generate" também.
+	- "m": Abreviação de "module". Pode usar "module" também.
+	- "nome-do-modulo": Nome que será atribuído ao módulo
+	
+- O que são os arrays existentes no corpo de um módulo?
+R: São os arrays abaixo:
+	"declarations": Onde são declarados os componentes daquele contexto da aplicação. Nenhum componente pode ser utilizado sem estar declarado em um módulo. Ele precisa fazer
+	parte de um contexto coezo dentro da aplicação para funcionar, não pode existir como um elemento avulso. Ex: AuthFormComponent declarado dentro de AuthModule
+	"Imports": Onde os módulos se comunicam através de dependência. Módulos são declarados dentro do array imports de outros módulos, para que seus componentes se tornem
+	acessíveis através em outras áreas da aplicação. Ex: FormsModule importado dentro do AuthModule.
+	"bootstrap": Informa o componente que vai ser inicializado pelo módulo via "bootstrap", ou seja, para subir a aplicação. 
+	Presente no root module de aplicação, que é o AppModule. Apesar de ser um array, é quase que uma regra ter apenas um elemento. No arquivo main.ts, existe a configuração
+	de bootstrap onde está descrito o módulo que proverá o componente invocado pelo app-root na index.html.
+	"providers": Onde são declaradas as classes (geralmente serviços), que serão invocados via injeção de dependência. As classes ali existentes precisam ter o decorator 
+	@Injectable().
+	
+#### Componentes
+
+- O que são componentes?
+R: São classes decoradas com o @Component(), cuja finalidade é ser um bloco reútilizável da aplicação em termos funcionais. No contexto de uma tela, é comum existirem diversos
+componentes que formam o contexto da funcionalidade, como filtro, menu, navegação, formulário, lista. Cada um desses itens pode ser um componente distinto, ou até
+mesmo ser formado por um grupo de componentes trabalhando em conjunto. Ex: Um filtro pode ter componentes para os campos de busca, e um componente distinto para o 
+botão de pesquisar, caso haja.
+
+- Quantas finalidades deve ter um componente?
+R: O menor número possível, para incentivar o reúso e menos duplicidade de código. Meros botões podem ser componentes distintos. Ex: Submit, voltar, avançar, filtrar. 
+Cada um desses botões de ação pode ser um componente reutilizável que possibilite a diversos locais do sistema reaproveitar tanto o estilo implementado, 
+quanto o comportamento, a fim de seguir um padrão tanto visual, quanto funcional.
+
+- Um componente é composto apenas de uma classe?
+R: Não. Um componente é composto de: 
+	- componente.html: HTML contendo a estrutura visual do componente
+	- componente.css: Css contendo os estilos que se aplicam apenas ao componente
+	- componente.ts: Typescript contendo a parte lógica e comportamental do componente
+	- compoenten.spec.ts: Typescript contendo os testes do componente
+	
+- Como funciona o ciclo de vida de um componente?
+R: Existem eventos denominados Lifecycle Hooks, que são invocados durante o ciclo de vida do componente. Estes eventos são callbacks de momentos
+do ciclo de vida, que podemos acessar devido a atribuição oriunda da implementação de interfaces.
+Ex:	- ngOnInit(): Oriundo da implementação da interface "OnInit", é chamado no início do ciclo de vida de um componente, antes mesmo da checagem dos filhos
+	- ngAfterViewInit(): Oriundo da implementação da interface "AfterViewInit", é chamado após a inicialização completa do componente
+	- ngOnDestroy(): Oriundo da implementação da interface "OnDestroy", é chamado no momento em que o componente foi destruído
+
+- Como criar um componente?
+R: Utilizando o seguinte comando do CLI: "ng g c nome-do-componente"
+Destrinchando o comando: Apenas o "c" é diferente do módulo. O "c" significa "component", que inclusive pode ser substituido por esta palavra.
+
+Curiosidade 02: Caso deseje criar um componente em uma pasta já existe, por exemplo, uma pasta já criada junto ao módulo, adicionar o parâmetro "--flat".
+
+- Como inicializar um componente criado?
+R: No decorator de um componente existem as seguintes propriedades:
+	- selector: tag utilizada para invocar o componente
+	- templateUrl: caminho para o arquivo .html referente ao componente
+	- styleUrls: Array de paths para arquivos css que serão utilizados pelo componente
+Para inicializar o componente criado, devemos pegar o seletor dele, ex: <app-auth> </app-auth> e adicionar ao HTML onde queremos que o componente seja invocado.
+Componentes podem ser inicializados um dentro do outro, apenas com a restrição de que seus módulos sejam relacionados via dependência.
+
+#### Pipes
+
+- O que é um pipe?
+R: Pipes são funcionalidades com a finalidade de transformar valores existentes em templates. Resumidamente, é uma análogia a um cano, pois um pipe recebe um valor e retorna um valor.
+Ex: 
+	- <div [name]="divName | default:'div-default'"></div>: Neste caso, se a variável "divName" tiver um valor, será atribuído a property [name] do elemento. Caso não,
+	será atribuído o valor 'div-default', pois este é o comportamento do DefaultPipe.
+	- {{ name | uppercase }}: Exibe o valor da variável name em letras maiúsculas, sem alterar o valor da variável
+Podem existir pipes para converter e formatar valores numéricos, transformar de um tipo para o outro, extrair valores numéricos de string, entre outras inúmeras aplicabilidades.
+
+- Pipes podem ser criados pelos devs também, ou apenas utilizados os do Angular?
+R: Podem e devem ser criados para atender a diversas finalidades da aplicação, também, incentivando o reúso e o reaproveitamento de comportamento entre diferentes telas.
+
+#### Rotas
+
+- O que é uma rota?
+R: É uma estrutura de navegação que permite ao usuário acessar diferentes funcionalidades de uma aplicação.
+Ex: https://bmalaw.com.br/tblegal/faturamento
+Destrinchando a URL:
+	- https É o scheme da URL, que define o protocólo utilizado na comunicação cliente/servidor
+	- bmalaw.com.br é o host (domínio) através do qual a aplicação é identificada
+	- tblegal/faturamento: É o caminho (path) para uma funcionalidade específica
+	
+- Como construir uma rota via Angular?
+R: Através da construção de Módulos de roteamento que utilizam o "RouterModule" nativo da ferramenta. Através de um módulo, que inclusive já vem incluso
+na estrutura padrão gerada pelo Angular CLI, podemos vincular componentes "raíz", a endereços específicos invocados pelo browser.
+Ex: podemos dizer que o path "auth", deverá ser utilizado para carregar no browser o "AuthComponent". Assim, o endereço para acesso a este determinado componente
+seria https://bmalaw.com.br/auth
+
+- Como eu crio de fato, uma ação de navegação dentro do projeto?
+R: Através de "Router Links". São diretivas adicionadas a botões ou âncoras ("<button></button>" ou "<a></a>"), que ao receberem um evento de "click", invocação o
+componente préviamente configurado no módulo de roteamento.
+Ex: <button [routerLink]="['/compA']">Componente A</button>: Neste exemplo, ao clicar no botão, é invocado o "Componente A".
+
+#### Eventos
+
+- O que é um evento?
+R: É um gatilho (trigger) para que seja desempenhada uma determinada função na aplicação. São invocados geralmente através de "binding" a elementos do HTML, quando há interação
+humana ou via software com os elementos em questão. Sintaxe: (nome_do_evento)="acoes_do_evento";
+Ex: São eventos:
+	- (click): invocado quando o usuário clica no determinado elemento HTML
+	- (dblclick): invocado quando o usuário da um duplo clique no elemento
+	- (blur): invocado quando um determinado elemento perde o foco
+	- (focus): invocado quando o elemento recebe foco
+	- (keyup): quando o usuário termina de pressionar uma tecla e retira o dedo do teclado
+	- (submit): invocado ao submetermos um formulário
+	
+Existem também eventos customizados, gerados através de um recurso do angular chamado "EventEmitter", que possibilita a um determinado evento criado 
+programaticamente ser emitido para fora do compoente. 
+Os eventos devem ser anotados com o decorator @Output.
+Todos estes eventos são utilizados para comunicação vertical entre componentes, ou seja, componentes filhos enviarem eventos para seus respectivos pais.
+
+#### Property Binding
+
+- O que é property binding?
+	
+..........Continua...

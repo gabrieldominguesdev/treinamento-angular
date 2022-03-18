@@ -1,0 +1,14 @@
+<p>Componente B</p>
+
+<hr />
+
+<p><button type="button" (click)="getAPI();">Fazer request Get para API de Teste</button></p>
+
+<table *ngIf="getResult">
+    <thead>
+        <th>Nome</th>
+    </thead>
+    <tbody *ngFor="let item of getResult">
+        <td>{{item.first_name | uppercase}}</td>
+    </tbody>
+</table>

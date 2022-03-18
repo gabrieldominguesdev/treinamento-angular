@@ -1,0 +1,27 @@
+.filhos {
+    width: auto;
+    box-sizing: border-box;
+}
+
+.filho {
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    height: 300px;
+    width: 50%;
+}
+
+.filho-esquerda {
+    background-color: lightcoral;
+    float: left;
+}
+
+.filho-direita {
+    background-color: lightcyan;
+    float: right;
+}
+
+.btn-esporro {
+    background-color: white;
+    border-radius: 10px;
+}

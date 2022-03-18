@@ -1,0 +1,13 @@
+.nav {
+    background-color: grey;
+    width: auto;
+    height: 50px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.nav-item {
+    margin-right: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
